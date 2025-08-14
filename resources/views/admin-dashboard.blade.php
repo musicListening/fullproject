@@ -79,7 +79,7 @@
 
     <div class="container mt-4">
 
-        <!-- ✅ Add Product Form -->
+        <!-- Add Product Form -->
         <h4 class="mb-3">Add New Product</h4>
         <div class="product-card mb-4">
             <form method="POST" action="{{ route('admin.products.store') }}">
@@ -107,7 +107,7 @@
             </form>
         </div>
 
-        <!-- ✅ Manage Existing Products -->
+        <!-- Manage Existing Products -->
         <h4 class="mb-3">Manage Products</h4>
         <div class="row">
             @foreach($products as $product)
@@ -133,7 +133,7 @@
                         <button type="submit" class="btn btn-primary w-100 mb-2">Save</button>
                     </form>
 
-                    <!-- ✅ Delete Product -->
+                    <!-- Delete Product -->
                     <form method="POST" action="{{ route('admin.products.delete', $product->id) }}">
                         @csrf
                         @method('DELETE')

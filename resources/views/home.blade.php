@@ -41,42 +41,40 @@
       }
 
       </style>
-  <style>
-.navmenu ul li a,
-.logout-link {
-  font-size: 1rem;
-  font-family: 'Playfair Display', Arial, sans-serif;
-  font-weight: 500;
-  color: white;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  transition: color 0.3s ease;
-  text-decoration: none;
-}
-.navmenu ul li a:hover,
-.logout-link:hover {
-  color: #FFD700;
-}
-.footer-logout {
-  background: none;
-  border: none;
-  color: #fff;
-  padding: 0;
-  margin: 0;
-  font-family: 'Playfair Display', Arial, sans-serif;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-.footer-logout:hover {
-  color: #FFD700;
-}
-</style>
-
-
+      <style>
+    .navmenu ul li a,
+    .logout-link {
+      font-size: 1rem;
+      font-family: 'Playfair Display', Arial, sans-serif;
+      font-weight: 500;
+      color: white;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+    .navmenu ul li a:hover,
+    .logout-link:hover {
+      color: #FFD700;
+    }
+    .footer-logout {
+      background: none;
+      border: none;
+      color: #fff;
+      padding: 0;
+      margin: 0;
+      font-family: 'Playfair Display', Arial, sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-logout:hover {
+      color: #FFD700;
+    }
+    </style>
     </head>
     <body>
         <header id="header" class="header d-flex align-items-center fixed-top">
@@ -391,17 +389,9 @@
   </div>
 </footer>
 
-<style>
-
-</style>
-
 
   <!-- Bootstrap JS (for dropdowns and responsive menu) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        
-    
-
-
   <script>
   document.addEventListener('DOMContentLoaded', function () {
     const navToggle = document.querySelector('.mobile-nav-toggle');
@@ -472,8 +462,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll("#navmenu ul li a");
 
     function onScroll() {
-    let scrollPos = window.scrollY + 150; // adjust offset for header height
-    console.log(scrollPos); // debug scroll position
+    let scrollPos = window.scrollY + 150; 
+    console.log(scrollPos); 
     sections.forEach((section) => {
         if (
             scrollPos >= section.offsetTop &&
@@ -542,8 +532,5 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
-    </body>
+</body>
 </html>

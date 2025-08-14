@@ -33,11 +33,11 @@ Route::delete('/admin/orders/{order}/delete', function (\App\Models\Order $order
 })->name('admin.orders.delete');
 
 
-// ✅ Pricing page using controller
+// Pricing page using controller
 Route::get('/pricing', [PageController::class, 'pricing'])->name('pricing');
 
 
-// ✅ Admin routes (only admins can access)
+// Admin routes (only admins can access)
 Route::get('/admin-dashboard', [ProductController::class, 'index'])
     ->middleware('auth')
     ->name('admin.dashboard');
@@ -46,11 +46,11 @@ Route::post('/admin/products', [ProductController::class, 'store'])->middleware(
 Route::post('/admin/products/{product}/update', [ProductController::class, 'update'])->middleware('auth')->name('admin.products.update');
 Route::delete('/admin/products/{product}/delete', [ProductController::class, 'destroy'])->middleware('auth')->name('admin.products.delete');
 
-// ✅ Order routes
+// Order routes
 Route::post('/order', [OrderController::class, 'store'])->middleware('auth')->name('order.store');
 Route::post('/order/{order}/complete', [OrderController::class, 'complete'])->middleware('auth')->name('order.complete');
 
-// ✅ Force logout
+// Force logout
 Route::get('/force-logout', function () {
     Auth::logout();
     session()->invalidate();
@@ -58,17 +58,17 @@ Route::get('/force-logout', function () {
     return redirect('/');
 });
 
-// ✅ Home route
+// Home route
 Route::get('/', function () {
     return view('home');
 })->name('home');
 
-// ✅ User Dashboard
+// User Dashboard
 Route::get('/user-dashboard', function () {
     return view('user-dashboard');
 })->middleware(['auth'])->name('user.dashboard');
 
-// ✅ Authentication routes
+// Authentication routes
 require __DIR__.'/auth.php';
 
 Route::get('/orders/{id}/download-pdf', [\App\Http\Controllers\OrderController::class, 'downloadPDF'])->name('order.download.pdf');

@@ -1,4 +1,4 @@
-{{-- resources/views/pricing.blade.php --}}
+<!-- resources/views/pricing.blade.php -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,12 +18,12 @@
         .product-card { border: none; padding: 15px; text-align: center; background-color: transparent; transition: transform 0.3s ease; }
         .product-card img {
           width: 100%;
-          height: 320px; /* Increase height */
+          height: 320px;
           object-fit: cover;
           border-radius: 10px;
           margin-bottom: 12px;
           transition: transform 0.3s ease;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional glow */
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .product-card:hover img { transform: scale(1.05); }
@@ -71,16 +71,16 @@
 <div class="container mt-5 pt-5">
   <div class="row">
 
-    {{-- LEFT PANEL --}}
+    <!-- Left Panel -->
     <div class="col-md-3 left-panel">
       <h4>Delivery Options</h4>
       <div class="form-check">
         <input class="form-check-input" type="checkbox" id="homeDelivery" checked>
-        <label class="form-check-label" for="homeDelivery">🏠 Home Delivery</label>
+        <label class="form-check-label" for="homeDelivery">Home Delivery</label>
       </div>
       <div class="form-check mb-4">
         <input class="form-check-input" type="checkbox" id="eventSupplies" checked>
-        <label class="form-check-label" for="eventSupplies">🎉 Event Supplies</label>
+        <label class="form-check-label" for="eventSupplies">Event Supplies</label>
       </div>
 
       <h5>Filter by Stock Status</h5>
@@ -93,19 +93,19 @@
         <label class="form-check-label" for="filterOutStock">Out of Stock</label>
       </div>
 
-      <h5 class="mt-4">🛒 Your Cart</h5>
+      <h5 class="mt-4">Your Cart</h5>
       @php
         $pendingOrder = auth()->check() ? \App\Models\Order::where('user_id', auth()->id())->where('status','pending')->first() : null;
       @endphp
 
       @if($pendingOrder)
-          <div class="alert alert-info">🚚 Delivery in Progress</div>
+          <div class="alert alert-info">Delivery in Progress</div>
           <form method="POST" action="{{ route('order.complete',$pendingOrder->id) }}">
             @csrf
             <button type="submit" class="btn btn-success w-100">Complete Delivery</button>
           </form>
           <a href="{{ route('order.download.pdf', $pendingOrder->id) }}" class="btn btn-outline-primary mt-2 w-100" target="_blank">
-            📄 Download Invoice PDF
+            Download Invoice PDF
           </a>
       @else
           <ul id="cart-list" class="list-group mb-3"></ul>
@@ -115,38 +115,37 @@
           @endauth
       @endif
 
-      {{-- Order History --}}
+      <!-- Order History -->
       @if(auth()->check() && isset($orders) && $orders->count())
         <div class="mt-5">
-          <h4>Your Order History 🧾</h4>
+          <h4>Your Order History</h4>
           <table class="table table-bordered mt-3">
-                    <thead class="table-dark">
-          <tr>
-              <th>#</th>
-              <th>Date</th>
-              <th>Total (Rs.)</th>
-              <th>PDF</th>
-          </tr>
-      </thead>
-      <tbody>
-          @foreach($orders as $order)
+            <thead class="table-dark">
               <tr>
-                  <td>{{ $loop->iteration }}</td>
-                  <td>{{ $order->created_at->format('Y-m-d') }}</td>
-                  <td>{{ number_format($order->total_amount, 2) }}</td>
-                  <td>
-                      <a href="{{ route('order.download', $order->id) }}" class="btn btn-sm btn-primary">PDF</a>
-                  </td>
+                  <th>#</th>
+                  <th>Date</th>
+                  <th>Total (Rs.)</th>
+                  <th>PDF</th>
               </tr>
-          @endforeach
-      </tbody>
-
+            </thead>
+            <tbody>
+              @foreach($orders as $order)
+                  <tr>
+                      <td>{{ $loop->iteration }}</td>
+                      <td>{{ $order->created_at->format('Y-m-d') }}</td>
+                      <td>{{ number_format($order->total_amount, 2) }}</td>
+                      <td>
+                          <a href="{{ route('order.download', $order->id) }}" class="btn btn-sm btn-primary">PDF</a>
+                      </td>
+                  </tr>
+              @endforeach
+            </tbody>
           </table>
         </div>
       @endif
     </div>
 
-    {{-- RIGHT PANEL --}}
+    <!-- Right Panel -->
     <div class="col-md-9">
       <h3 class="mb-4">Available Bottled Water</h3>
       <div class="row g-4" id="product-list">
@@ -174,7 +173,7 @@
   </div>
 </div>
 
-{{-- Modal --}}
+<!-- Modal -->
 <div class="modal fade" id="orderModal" tabindex="-1">
   <div class="modal-dialog">
     <form class="modal-content" method="POST" action="{{ route('order.store') }}">
@@ -197,7 +196,6 @@
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 
 <script>
 let cart = [];
